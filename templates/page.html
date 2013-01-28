@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{% for post in g.posts[(p-1)*config.per_page:p*config.per_page] %}
+<article class="post"><header>
+    <h1 class="title"><a href="{{ post.permalink }}">{{ post.title }}</a></h1>
+    <time datetime="{{ post.updated | xmldatetime }}">
+        <span class="day"> {{ post.date | day }}</span><span class="month">{{ post.date | month }}</span>
+    </time>
+</header>
+    <div class="entry-content">
+        {{ post.content }}
+        {#
+        <div class="sharing">
+            <div class="addthis_toolbox addthis_default_style ">
+                <a class="addthis_button_tweet"></a>
+                <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                <a class="addthis_counter addthis_pill_style"></a>
+            </div>
+            <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4daee9911f9dfcb4"></script>
+        </div>
+        #}
+        <footer class="meta">
+            <div class="tags">
+                {% for tag in post.tags %}
+                <a class='category' href='/tag/{{ tag }}.html'>{{ tag | capitalize }}</a>
+                {% endfor %}
+            </div>
+            <a class="comment" href="{{ post.permalink }}#comment">Comments</a>
+        </footer>
+    </div>
+</article>
+{% endfor %}
+<nav id="pagenavi">
+    {% if p > 1 %}
+    <a href="
+{% if p == 2 %}
+/
+{% else %}
+/page/{{ p - 1 }}.html
+{% endif %}
+"  class="prev alignleft">Prev</a>
+    {% endif %}
+
+    {% if posts_num > p * config.per_page %}
+    <a href="/page/{{ p + 1 }}.html" class="next alignright" >
+        <span class="icon">Next</span>
+    </a>
+    {% endif %}
+    <div class="clearfix"></div>
+</nav>
+{% endblock %}

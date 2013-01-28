@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Archives | {{ site.name }}
+{% endblock %}
+
+{% block content %}
+<header id="archive-header">
+    <h1 class="alignleft">Archives</h1>
+    <form action="http://google.com/search" class="search alignright" method="get">
+        <input type="text" name="q" results="0" placeholder="Search">
+        <input type="hidden" name="q" value="site:{{ site.url }}">
+    </form>
+</header>
+
+{% for archive in g.archives %}
+<section class="archives"><div class="year">{{ archive.name }}</div>
+    {% for post in archive.posts %}
+    <article class="archive">
+        <h1 class="title"><a href="{{ post.permalink }}">{{ post.title }}</a></h1>
+        <footer>
+            <time datetime="{{ post.updated | xmldatetime }}">{{ post.date | month }} {{ post.date | day }}</time>
+            <div class="tags">
+                {% for tag in post.tags %}
+                <a class='category' href='/tag/{{ tag }}.html'>{{ tag | capitalize }}</a>
+                {% endfor %}
+            </div>
+        </footer>
+    </article>
+    {% endfor %}
+</section>
+{% endfor %}
+{% endblock %}

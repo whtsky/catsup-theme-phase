@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<meta name="description" content="Tag: {{ tag.name }}">
+{% endblock %}
+
+{% block title %}
+{{ tag.name }} | {{ site.name }}
+{% endblock %}
+
+{% block content %}
+<header id="archive-header">
+    <h1 class="alignleft">Tag: {{ tag.name }}</h1>
+    <form action="http://google.com/search" class="search alignright" method="get">
+        <input type="text" name="q" results="0" placeholder="Search">
+        <input type="hidden" name="q" value="site:{{ site.url }}">
+    </form>
+</header>
+
+{% set year = '' %}
+{% for post in tag.posts %}
+{% if post.date[:4] != year %}
+{% if year != '' %}
+</section>
+{% endif %}
+{% set year = post.date[:4] %}
+<section class="archives"><div class="year">{{ year }}</div>
+{% endif %}
+    <article class="archive">
+        <h1 class="title"><a href="{{ post.permalink }}">{{ post.title }}</a></h1>
+        <footer>
+            <time datetime="{{ post.updated | xmldatetime }}">{{ post.date | month }} {{ post.date | day }}</time>
+            <div class="tags">
+                {% for tag in post.tags %}
+                <a class='category' href='/tag/{{ tag }}.html'>{{ tag | capitalize }}</a>
+                {% endfor %}
+            </div>
+        </footer>
+    </article>
+{% endfor %}
+</section>
+
+{% endblock %}
