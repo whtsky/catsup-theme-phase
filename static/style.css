@@ -407,69 +407,6 @@ article .entry-content .sharing iframe {
 .post .entry-content .meta .comment:hover {
     text-decoration: none;
 }
-.post .gallery {
-    overflow: hidden;
-    position: relative;
-}
-.post .gallery:hover .control {
-    opacity: 1;
-    -ms-filter: none;
-    filter: none;
-}
-.post .gallery img {
-    min-width: 100%;
-    max-width: 100%;
-    height: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-    filter: alpha(opacity=0);
-}
-.post .gallery .control {
-    opacity: 0;
-    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-    filter: alpha(opacity=0);
-    -webkit-transition: 0.3s;
-    -moz-transition: 0.3s;
-    -o-transition: 0.3s;
-    -ms-transition: 0.3s;
-    transition: 0.3s;
-}
-.post .gallery .prev,
-.post .gallery .next {
-    position: absolute;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    cursor: pointer;
-}
-.post .gallery .prev:before,
-.post .gallery .next:before {
-    position: absolute;
-    font: 24px/1 FontAwesome;
-    text-align: center;
-    width: 24px;
-    text-shadow: 0 0 15px rgba(0,0,0,0.5);
-    color: #fff;
-    margin-top: -12px;
-    top: 50%;
-}
-.post .gallery .prev {
-    left: 0;
-}
-.post .gallery .prev:before {
-    content: '\f053';
-    left: 10px;
-}
-.post .gallery .next {
-    right: 0;
-}
-.post .gallery .next:before {
-    content: '\f054';
-    right: 10px;
-}
 .page:before {
     content: "";
     position: absolute;

@@ -10,6 +10,9 @@
 </header>
     <div class="entry-content">
         {{ post.excerpt }}
+        {% if post.have_more %}
+        <a href="{{ post.permalink }}">Read more...</a>
+        {% endif %}
         {#
         <div class="sharing">
             <div class="addthis_toolbox addthis_default_style ">
