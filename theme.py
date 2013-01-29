@@ -7,6 +7,5 @@ pages = [
 vars = {
     "facebook": "whtsky",
     "googleplus": "108491241718304056447",
-    "twitter": "whouz",
     "github": "whtsky",
 }
