@@ -6,6 +6,10 @@
 {{ twittercard(post) }}
 {% endblock %}
 
+{% block title %}
+{{ post.title }} | {{ site.name }}
+{% endblock %}
+
 {% block content %}
 <article class="post"><header>
     <h1 class="title">{{ post.title }}</h1>
