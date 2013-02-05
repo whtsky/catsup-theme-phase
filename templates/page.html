@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-{% for post in g.posts[(p-1)*config.per_page:p*config.per_page] %}
+{% for post in pagination.items %}
 <article class="post"><header>
     <h1 class="title"><a href="{{ post.permalink }}">{{ post.title }}</a></h1>
     <time datetime="{{ post.updated | xmldatetime }}">
@@ -35,21 +35,16 @@
 </article>
 {% endfor %}
 <nav id="pagenavi">
-    {% if p > 1 %}
-    <a href="
-{% if p == 2 %}
-/
-{% else %}
-/page/{{ p - 1 }}.html
-{% endif %}
-"  class="prev alignleft">Prev</a>
+    {% if pagination.has_prev %}
+    <a href="{{ pagination.prev_permalink }}"  class="prev alignleft">Prev</a>
     {% endif %}
 
-    {% if posts_num > p * config.per_page %}
-    <a href="/page/{{ p + 1 }}.html" class="next alignright" >
+    {% if pagination.has_next %}
+    <a href="{{ pagination.next_permalink }}" class="next alignright" >
         <span class="icon">Next</span>
     </a>
     {% endif %}
+
     <div class="clearfix"></div>
 </nav>
 {% endblock %}
