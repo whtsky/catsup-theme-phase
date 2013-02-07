@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     {% block head %}{% endblock %}
-    <meta name="author" content="{{ author }}">
+    <meta name="author" content="{{ author.name }}">
     <title>{% block title %}{{ site.name }}{% endblock %}</title>
     <link rel="alternate" type="application/rss+xml" href="{{ config.feed }}" title="{{ site.name }}" />
     <link href="{{ static_url('style.css') }}" media="screen, projection" rel="stylesheet" type="text/css">
