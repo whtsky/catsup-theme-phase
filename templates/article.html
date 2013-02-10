@@ -1,9 +1,8 @@
 {% extends "layout.html" %}
 
 {% block head %}
-<meta name="description" content="{{ post.title }},{% for tg in post.tags %}{{ tg }},{% endfor %}, {{ post.description }}">
-{% from 'utils.html' import twittercard %}
-{{ twittercard(post) }}
+{% from 'utils.html' import meta %}
+{{ meta(post) }}
 {% endblock %}
 
 {% block title %}
