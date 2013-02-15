@@ -1,19 +1,29 @@
 {% extends "layout.html" %}
 
+{% block head %}
+    {% if pagination.has_prev %}
+        <link rel="prev" href="{{ site.url }}{{ pagination.prev_permalink }}" />
+    {% endif %}
+
+    {% if pagination.has_next %}
+        <link rel="next" href="{{ site.url }}{{ pagination.next_permalink }}" />
+    {% endif %}
+{% endblock %}
+
 {% block content %}
-{% for post in pagination.items %}
-<article class="post"><header>
-    <h1 class="title"><a href="{{ post.permalink }}">{{ post.title }}</a></h1>
-    <time datetime="{{ post.updated | xmldatetime }}">
-        <span class="day"> {{ post.date | day }}</span><span class="month">{{ post.date | month }}</span>
-    </time>
-</header>
-    <div class="entry-content">
-        {{ post.summary }}
-        {% if post.has_more %}
-        <a href="{{ post.permalink }}">Read more...</a>
-        {% endif %}
-        {#
+    {% for post in pagination.items %}
+        <article class="post"><header>
+            <h1 class="title"><a href="{{ post.permalink }}">{{ post.title }}</a></h1>
+            <time datetime="{{ post.updated | xmldatetime }}">
+                <span class="day"> {{ post.date | day }}</span><span class="month">{{ post.date | month }}</span>
+            </time>
+        </header>
+            <div class="entry-content">
+                {{ post.summary }}
+                {% if post.has_more %}
+                    <a href="{{ post.permalink }}">Read more...</a>
+                {% endif %}
+                {#
         <div class="sharing">
             <div class="addthis_toolbox addthis_default_style ">
                 <a class="addthis_button_tweet"></a>
@@ -23,28 +33,28 @@
             <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4daee9911f9dfcb4"></script>
         </div>
         #}
-        <footer class="meta">
-            <div class="tags">
-                {% for tag in post.tags %}
-                <a class='category' href='/tag/{{ tag }}.html'>{{ tag | capitalize }}</a>
-                {% endfor %}
+                <footer class="meta">
+                    <div class="tags">
+                        {% for tag in post.tags %}
+                            <a class='category' href='/tag/{{ tag }}.html'>{{ tag | capitalize }}</a>
+                        {% endfor %}
+                    </div>
+                    <a class="comment" href="{{ post.permalink }}#comment">Comments</a>
+                </footer>
             </div>
-            <a class="comment" href="{{ post.permalink }}#comment">Comments</a>
-        </footer>
-    </div>
-</article>
-{% endfor %}
-<nav id="pagenavi">
-    {% if pagination.has_prev %}
-    <a href="{{ pagination.prev_permalink }}"  class="prev alignleft">Prev</a>
-    {% endif %}
+        </article>
+    {% endfor %}
+    <nav id="pagenavi">
+        {% if pagination.has_prev %}
+            <a href="{{ pagination.prev_permalink }}"  class="prev alignleft">Prev</a>
+        {% endif %}
 
-    {% if pagination.has_next %}
-    <a href="{{ pagination.next_permalink }}" class="next alignright" >
-        <span class="icon">Next</span>
-    </a>
-    {% endif %}
+        {% if pagination.has_next %}
+            <a href="{{ pagination.next_permalink }}" class="next alignright" >
+                <span class="icon">Next</span>
+            </a>
+        {% endif %}
 
-    <div class="clearfix"></div>
-</nav>
+        <div class="clearfix"></div>
+    </nav>
 {% endblock %}
