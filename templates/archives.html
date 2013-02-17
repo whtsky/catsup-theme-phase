@@ -15,7 +15,7 @@ Archives | {{ site.name }}
 
 {% for archive in g.archives %}
 <section class="archives"><div class="year">{{ archive.name }}</div>
-    {% for post in archive.posts %}
+    {% for post in archive %}
     <article class="archive">
         <h1 class="title"><a href="{{ post.permalink }}">{{ post.title }}</a></h1>
         <footer>
