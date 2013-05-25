@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -24,26 +23,20 @@
 <div id="content" class="inner">
 {% block content %}{% endblock %}
 </div>
-<footer id="footer" class="inner"><div class="social alignright">
-
-    <a class="facebook" href="http://www.facebook.com/{{ theme.facebook }}" title="Facebook">Facebook</a>
-
-    <a class="google" href="https://plus.google.com/{{ theme.googleplus }}?rel=author" title="Google+">Google+</a>
-
-    <a class="twitter" href="http://twitter.com/{{ author.twitter }}" title="Twitter">Twitter</a>
-
-    <a class="github" href="https://github.com/{{ theme.github }}" title="GitHub">GitHub</a>
-
-    <a class="rss" href="{{ config.feed }}" title="RSS">RSS</a>
-</div>
+<footer id="footer" class="inner">
+    <div class="social alignright">
+        <a class="facebook" href="http://www.facebook.com/{{ theme.facebook }}" title="Facebook">Facebook</a>
+        <a class="google" href="https://plus.google.com/{{ theme.googleplus }}?rel=author" title="Google+">Google+</a>
+        <a class="twitter" href="http://twitter.com/{{ author.twitter }}" title="Twitter">Twitter</a>
+        <a class="github" href="https://github.com/{{ theme.github }}" title="GitHub">GitHub</a>
+        <a class="rss" href="{{ config.feed }}" title="RSS">RSS</a>
+    </div>
     <p>
         &copy; 2013 {{ author.name }}
-
         Powered by <a href="https://github.com/whtsky/catsup">Catsup</a>
-
-        Hosted on <a href="https://whmcs.hangssh.info/aff.php?aff=144">Host700</a>
     </p>
-    <div class="clearfix"></div></footer>
+    <div class="clearfix"></div>
+</footer>
 <div id="phasebeam">
     <canvas></canvas>
     <canvas></canvas>
